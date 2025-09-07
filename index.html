@@ -168,7 +168,6 @@
             margin-bottom: var(--spacing-md);
             font-weight: 700;
             letter-spacing: -1px;
-            animation: fadeInUp 1s ease-out;
         }
         
         .hero-subtitle {
@@ -178,7 +177,6 @@
             max-width: 700px;
             margin-left: auto;
             margin-right: auto;
-            animation: fadeInUp 1s ease-out 0.3s backwards;
         }
         
         .btn {
@@ -193,7 +191,6 @@
             cursor: pointer;
             transition: var(--transition);
             box-shadow: var(--shadow-sm);
-            animation: fadeInUp 1s ease-out 0.6s backwards;
         }
         
         .btn:hover {
@@ -201,15 +198,16 @@
             box-shadow: var(--shadow-md);
         }
         
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+        /* Fade-in Animation */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+        
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
         }
         
         /* Sections */
@@ -492,8 +490,31 @@
             font-size: 0.9rem;
         }
         
-        /* Responsive Design */
+        /* Enhanced Responsive Design */
+        @media (max-width: 1024px) {
+            .hero-title {
+                font-size: 3rem;
+            }
+            
+            .section-title {
+                font-size: 2.2rem;
+            }
+            
+            .branches-container,
+            .projects-container,
+            .contact-container {
+                grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            }
+        }
+        
         @media (max-width: 768px) {
+            :root {
+                --spacing-xl: 3rem;
+                --spacing-lg: 2rem;
+                --spacing-md: 1rem;
+                --spacing-sm: 0.5rem;
+            }
+            
             .hamburger {
                 display: block;
             }
@@ -520,12 +541,94 @@
                 margin: var(--spacing-md) 0;
             }
             
+            .hero {
+                padding: calc(var(--spacing-xl) + 60px) 0 var(--spacing-xl);
+            }
+            
             .hero-title {
                 font-size: 2.5rem;
             }
             
             .hero-subtitle {
                 font-size: 1.1rem;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .branch-title {
+                font-size: 1.4rem;
+            }
+            
+            .project-title {
+                font-size: 1.2rem;
+            }
+            
+            .project-img {
+                height: 180px;
+            }
+            
+            .about-content p {
+                font-size: 1rem;
+            }
+            
+            .contact-form .btn {
+                padding: 0.5rem 1rem;
+            }
+            
+            .social-link {
+                font-size: 1.5rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .logo {
+                font-size: 1.5rem;
+            }
+            
+            .logo::before {
+                width: 20px;
+                height: 20px;
+            }
+            
+            .hero-title {
+                font-size: 2rem;
+            }
+            
+            .hero-subtitle {
+                font-size: 1rem;
+            }
+            
+            .section-title {
+                font-size: 1.8rem;
+            }
+            
+            .btn {
+                padding: 0.6rem 1.2rem;
+                font-size: 0.9rem;
+            }
+            
+            .branch-icon {
+                font-size: 2.5rem;
+            }
+            
+            .branch-title {
+                font-size: 1.3rem;
+            }
+            
+            .project-img {
+                height: 160px;
+                font-size: 1.2rem;
+            }
+            
+            .contact-icon {
+                font-size: 1.2rem;
+                margin-right: 1rem;
+            }
+            
+            .form-input {
+                font-size: 0.9rem;
             }
         }
     </style>
@@ -549,7 +652,7 @@
     </header>
 
     <!-- Hero Section -->
-    <section class="hero">
+    <section class="hero fade-in">
         <div class="container hero-content">
             <h1 class="hero-title">Empowering Innovation Through Technology</h1>
             <p class="hero-subtitle">KARAK delivers state-of-the-art software development, immersive game experiences, and transformative tech education to drive success in the digital era.</p>
@@ -558,26 +661,26 @@
     </section>
 
     <!-- Services/Branches Section -->
-    <section class="branches" id="services">
+    <section class="branches fade-in" id="services">
         <div class="container">
             <h2 class="section-title">Our Specialized Services</h2>
             <p class="section-subtitle">Discover KARAK's three pillars of excellence, crafted to address your unique technological needs with precision and creativity.</p>
             <div class="branches-container">
-                <div class="branch-card">
+                <div class="branch-card fade-in">
                     <div class="branch-icon">
                         <i class="fas fa-laptop-code"></i>
                     </div>
                     <h3 class="branch-title">KARAK: Softwares</h3>
                     <p>End-to-end software engineering: From bespoke in-house tools and robust systems to dynamic websites, engaging ad platforms, elegant digital invitations, and seamless mobile apps.</p>
                 </div>
-                <div class="branch-card">
+                <div class="branch-card fade-in">
                     <div class="branch-icon">
                         <i class="fas fa-gamepad"></i>
                     </div>
                     <h3 class="branch-title">KARAK: Studios</h3>
                     <p>Our dedicated game development arm, crafting captivating experiences like the SNAFU series. Stay tuned for upcoming launches on major app stores.</p>
                 </div>
-                <div class="branch-card">
+                <div class="branch-card fade-in">
                     <div class="branch-icon">
                         <i class="fas fa-graduation-cap"></i>
                     </div>
@@ -589,47 +692,47 @@
     </section>
 
     <!-- Projects Section -->
-    <section class="projects" id="projects">
+    <section class="projects fade-in" id="projects">
         <div class="container">
             <h2 class="section-title">Featured Projects</h2>
             <p class="section-subtitle">Witness our expertise in action through a selection of groundbreaking projects spanning software, gaming, and beyond.</p>
             <div class="projects-container">
-                <div class="project-card">
+                <div class="project-card fade-in">
                     <div class="project-img">SNAFU: Skyward</div>
                     <div class="project-content">
                         <h3 class="project-title">SNAFU: Skyward</h3>
                         <p>Debut title from our studios, now thrilling players worldwide on mobile platforms.</p>
                     </div>
                 </div>
-                <div class="project-card">
+                <div class="project-card fade-in">
                     <div class="project-img">SNAFU: Unhinged</div>
                     <div class="project-content">
                         <h3 class="project-title">SNAFU: Unhinged</h3>
                         <p>Next evolution in the SNAFU saga, pushing boundaries in mobile gaming innovation.</p>
                     </div>
                 </div>
-                <div class="project-card">
+                <div class="project-card fade-in">
                     <div class="project-img">Legal Invoicing System</div>
                     <div class="project-content">
                         <h3 class="project-title">Advanced Legal Invoicing</h3>
                         <p>Secure, compliant system for streamlined financial operations in legal practices.</p>
                     </div>
                 </div>
-                <div class="project-card">
+                <div class="project-card fade-in">
                     <div class="project-img">Business Efficiency Apps</div>
                     <div class="project-content">
                         <h3 class="project-title">Enterprise Efficiency Suite</h3>
                         <p>Tailored applications optimizing workflows and boosting operational productivity.</p>
                     </div>
                 </div>
-                <div class="project-card">
+                <div class="project-card fade-in">
                     <div class="project-img">Digital Invitations</div>
                     <div class="project-content">
                         <h3 class="project-title">Premium Digital Events</h3>
                         <p>Sophisticated invitation and promotion tools for memorable events.</p>
                     </div>
                 </div>
-                <div class="project-card">
+                <div class="project-card fade-in">
                     <div class="project-img">Petrol Company Database</div>
                     <div class="project-content">
                         <h3 class="project-title">Energy Sector Database</h3>
@@ -641,7 +744,7 @@
     </section>
 
     <!-- About Section -->
-    <section class="about" id="about">
+    <section class="about fade-in" id="about">
         <div class="container">
             <h2 class="section-title">Discover KARAK</h2>
             <div class="about-content">
@@ -654,38 +757,38 @@
     </section>
 
     <!-- Contact Section -->
-    <section class="contact" id="contact">
+    <section class="contact fade-in" id="contact">
         <div class="container">
             <h2 class="section-title">Connect With Us</h2>
             <p class="section-subtitle">Let's discuss how KARAK can elevate your vision. Reach out today for expert consultations on your next project.</p>
             <div class="contact-container">
                 <div class="contact-info">
-                    <div class="contact-item">
+                    <div class="contact-item fade-in">
                         <div class="contact-icon"><i class="fas fa-envelope"></i></div>
                         <div>karaksoftwares@gmail.com</div>
                     </div>
-                    <div class="contact-item">
+                    <div class="contact-item fade-in">
                         <div class="contact-icon"><i class="fas fa-phone"></i></div>
-                        <div>0731003361</div>
+                        <div>+254731003361</div>
                     </div>
-                    <div class="contact-item">
+                    <div class="contact-item fade-in">
                         <div class="contact-icon"><i class="fab fa-github"></i></div>
                         <div>github.com/karaksoftwares-cmyk</div>
                     </div>
-                    <div class="contact-item">
+                    <div class="contact-item fade-in">
                         <div class="contact-icon"><i class="fab fa-instagram"></i></div>
                         <div>instagram.com/karakexe</div>
                     </div>
-                    <div class="contact-item">
+                    <div class="contact-item fade-in">
                         <div class="contact-icon"><i class="fab fa-tiktok"></i></div>
                         <div>tiktok.com/@karakexe</div>
                     </div>
-                    <div class="contact-item">
+                    <div class="contact-item fade-in">
                         <div class="contact-icon"><i class="fab fa-twitter"></i></div>
                         <div>x.com/Karakexe</div>
                     </div>
                 </div>
-                <div class="contact-form">
+                <div class="contact-form fade-in">
                     <form id="contactForm">
                         <div class="form-group">
                             <input type="text" class="form-input" placeholder="Your Name" required>
@@ -707,7 +810,7 @@
     </section>
 
     <!-- Footer -->
-    <footer>
+    <footer class="fade-in">
         <div class="container">
             <div class="logo">KARAK</div>
             <div class="social-links">
@@ -751,6 +854,28 @@
             e.preventDefault();
             alert('Thank you for your message! Our team will respond shortly.');
             this.reset();
+        });
+        
+        // Fade-in on scroll
+        const fadeElements = document.querySelectorAll('.fade-in');
+        
+        const observerOptions = {
+            root: null,
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+        
+        const fadeObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    fadeObserver.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+        
+        fadeElements.forEach(el => {
+            fadeObserver.observe(el);
         });
     </script>
 </body>
