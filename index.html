@@ -1,0 +1,757 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KARAK - Innovative Technology Solutions</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Reset and Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        :root {
+            /* Enhanced Color Palette - Deep Purple Theme with Accents */
+            --primary-color: #5e35b1; /* Vibrant deep purple */
+            --primary-light: #8e66ff; /* Lighter purple for highlights */
+            --primary-dark: #4527a0; /* Darker purple for depth */
+            --accent-color: #ff6584; /* Pink accent for CTAs and highlights */
+            --secondary-color: #ffffff; /* White */
+            --text-dark: #212121; /* Dark text */
+            --text-light: #f5f5f5; /* Light text */
+            --background-light: #fafafa; /* Subtle light background */
+            --background-dark: #f0f4f8; /* Soft gray-blue for sections */
+            --spacing-sm: 0.75rem;
+            --spacing-md: 1.5rem;
+            --spacing-lg: 3rem;
+            --spacing-xl: 5rem;
+            --border-radius: 12px;
+            --shadow-sm: 0 4px 12px rgba(0, 0, 0, 0.08);
+            --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.12);
+            --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+        
+        body {
+            color: var(--text-dark);
+            line-height: 1.7;
+            background-color: var(--secondary-color);
+            overflow-x: hidden;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 var(--spacing-md);
+        }
+        
+        /* Header Styles */
+        header {
+            background-color: var(--primary-dark);
+            color: var(--text-light);
+            padding: var(--spacing-md) 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: var(--shadow-sm);
+            transition: var(--transition);
+        }
+        
+        header.scrolled {
+            background-color: rgba(69, 39, 160, 0.95);
+            backdrop-filter: blur(10px);
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--secondary-color);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .logo::before {
+            content: '';
+            width: 24px;
+            height: 24px;
+            background: linear-gradient(45deg, var(--primary-light), var(--accent-color));
+            border-radius: 50%;
+        }
+        
+        .nav-menu {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-item {
+            margin-left: var(--spacing-lg);
+        }
+        
+        .nav-link {
+            color: var(--text-light);
+            text-decoration: none;
+            font-weight: 500;
+            position: relative;
+            transition: var(--transition);
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--accent-color);
+            transition: var(--transition);
+        }
+        
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        
+        .nav-link:hover {
+            color: var(--accent-color);
+        }
+        
+        .hamburger {
+            display: none;
+            cursor: pointer;
+            font-size: 1.5rem;
+            color: var(--text-light);
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary-color) 100%);
+            color: var(--text-light);
+            padding: calc(var(--spacing-xl) + 80px) 0 var(--spacing-xl);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 50% 50%, rgba(255,255,255,0.05) 0%, transparent 50%);
+            pointer-events: none;
+        }
+        
+        .hero-content {
+            max-width: 900px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .hero-title {
+            font-size: 3.5rem;
+            margin-bottom: var(--spacing-md);
+            font-weight: 700;
+            letter-spacing: -1px;
+            animation: fadeInUp 1s ease-out;
+        }
+        
+        .hero-subtitle {
+            font-size: 1.3rem;
+            margin-bottom: var(--spacing-lg);
+            font-weight: 300;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            animation: fadeInUp 1s ease-out 0.3s backwards;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: var(--spacing-sm) var(--spacing-lg);
+            background: linear-gradient(45deg, var(--accent-color), var(--primary-light));
+            color: var(--secondary-color);
+            border: none;
+            border-radius: 50px;
+            font-weight: 600;
+            text-decoration: none;
+            cursor: pointer;
+            transition: var(--transition);
+            box-shadow: var(--shadow-sm);
+            animation: fadeInUp 1s ease-out 0.6s backwards;
+        }
+        
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-md);
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        /* Sections */
+        section {
+            padding: var(--spacing-xl) 0;
+            position: relative;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: var(--spacing-md);
+            color: var(--primary-dark);
+            font-size: 2.5rem;
+            font-weight: 700;
+            position: relative;
+        }
+        
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary-light), var(--accent-color));
+            margin: 1rem auto 0;
+        }
+        
+        .section-subtitle {
+            text-align: center;
+            margin-bottom: var(--spacing-lg);
+            color: var(--text-dark);
+            font-size: 1.1rem;
+            font-weight: 300;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        /* Branches/Services Section */
+        .branches {
+            background-color: var(--background-dark);
+        }
+        
+        .branches-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: var(--spacing-lg);
+        }
+        
+        .branch-card {
+            background-color: var(--secondary-color);
+            border-radius: var(--border-radius);
+            padding: var(--spacing-lg);
+            box-shadow: var(--shadow-sm);
+            transition: var(--transition);
+            text-align: center;
+        }
+        
+        .branch-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-md);
+        }
+        
+        .branch-icon {
+            font-size: 3rem;
+            color: var(--primary-color);
+            margin-bottom: var(--spacing-md);
+            background: linear-gradient(45deg, var(--primary-light), var(--accent-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .branch-title {
+            font-size: 1.6rem;
+            margin-bottom: var(--spacing-md);
+            color: var(--primary-dark);
+            font-weight: 600;
+        }
+        
+        .branch-card p {
+            font-weight: 300;
+            color: var(--text-dark);
+        }
+        
+        /* Projects Section */
+        .projects {
+            background-color: var(--background-light);
+        }
+        
+        .projects-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: var(--spacing-lg);
+        }
+        
+        .project-card {
+            background-color: var(--secondary-color);
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+            transition: var(--transition);
+        }
+        
+        .project-card:hover {
+            transform: scale(1.03);
+            box-shadow: var(--shadow-md);
+        }
+        
+        .project-img {
+            width: 100%;
+            height: 220px;
+            background: linear-gradient(135deg, var(--primary-light), var(--accent-color));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--secondary-color);
+            font-size: 1.4rem;
+            font-weight: 600;
+            position: relative;
+        }
+        
+        .project-img::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.1);
+            opacity: 0;
+            transition: var(--transition);
+        }
+        
+        .project-card:hover .project-img::before {
+            opacity: 1;
+        }
+        
+        .project-content {
+            padding: var(--spacing-md);
+        }
+        
+        .project-title {
+            font-size: 1.3rem;
+            margin-bottom: var(--spacing-sm);
+            color: var(--primary-dark);
+            font-weight: 600;
+        }
+        
+        .project-content p {
+            font-weight: 300;
+            color: var(--text-dark);
+        }
+        
+        /* About Section */
+        .about {
+            background-color: var(--background-dark);
+        }
+        
+        .about-content {
+            max-width: 900px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        
+        .about-content p {
+            margin-bottom: var(--spacing-md);
+            font-weight: 300;
+            font-size: 1.05rem;
+        }
+        
+        /* Contact Section */
+        .contact {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-dark) 100%);
+            color: var(--text-light);
+        }
+        
+        .contact .section-title {
+            color: var(--secondary-color);
+        }
+        
+        .contact .section-title::after {
+            background: var(--accent-color);
+        }
+        
+        .contact .section-subtitle {
+            color: var(--text-light);
+        }
+        
+        .contact-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: var(--spacing-lg);
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: var(--spacing-md);
+            transition: var(--transition);
+        }
+        
+        .contact-item:hover {
+            transform: translateX(5px);
+        }
+        
+        .contact-icon {
+            font-size: 1.5rem;
+            color: var(--accent-color);
+            margin-right: var(--spacing-md);
+            width: 30px;
+        }
+        
+        .contact-item div:last-child {
+            color: var(--text-light);
+            font-weight: 300;
+        }
+        
+        .contact-form .form-group {
+            margin-bottom: var(--spacing-md);
+        }
+        
+        .form-input {
+            width: 100%;
+            padding: var(--spacing-sm) var(--spacing-md);
+            border: none;
+            border-radius: var(--border-radius);
+            font-size: 1rem;
+            background-color: rgba(255,255,255,0.1);
+            color: var(--text-light);
+            transition: var(--transition);
+        }
+        
+        .form-input:focus {
+            outline: none;
+            background-color: rgba(255,255,255,0.2);
+            box-shadow: 0 0 0 2px var(--accent-color);
+        }
+        
+        .form-input::placeholder {
+            color: rgba(255,255,255,0.7);
+        }
+        
+        textarea.form-input {
+            min-height: 160px;
+            resize: vertical;
+        }
+        
+        .contact-form .btn {
+            width: 100%;
+            border-radius: 50px;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--primary-dark);
+            color: var(--text-light);
+            padding: var(--spacing-lg) 0;
+            text-align: center;
+        }
+        
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: var(--spacing-md);
+            margin: var(--spacing-md) 0;
+        }
+        
+        .social-link {
+            color: var(--text-light);
+            font-size: 1.8rem;
+            transition: var(--transition);
+        }
+        
+        .social-link:hover {
+            color: var(--accent-color);
+            transform: scale(1.2);
+        }
+        
+        footer p {
+            font-weight: 300;
+            font-size: 0.9rem;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hamburger {
+                display: block;
+            }
+            
+            .nav-menu {
+                position: absolute;
+                left: 0;
+                top: 100%;
+                flex-direction: column;
+                background-color: var(--primary-dark);
+                width: 100%;
+                text-align: center;
+                transition: var(--transition);
+                max-height: 0;
+                overflow: hidden;
+            }
+            
+            .nav-menu.active {
+                max-height: 300px;
+                padding: var(--spacing-md) 0;
+            }
+            
+            .nav-item {
+                margin: var(--spacing-md) 0;
+            }
+            
+            .hero-title {
+                font-size: 2.5rem;
+            }
+            
+            .hero-subtitle {
+                font-size: 1.1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Section -->
+    <header id="header">
+        <div class="container header-container">
+            <a href="#" class="logo">KARAK</a>
+            <div class="hamburger" id="hamburger">
+                <i class="fas fa-bars"></i>
+            </div>
+            <ul class="nav-menu" id="nav-menu">
+                <li class="nav-item"><a href="#" class="nav-link">Home</a></li>
+                <li class="nav-item"><a href="#services" class="nav-link">Services</a></li>
+                <li class="nav-item"><a href="#projects" class="nav-link">Projects</a></li>
+                <li class="nav-item"><a href="#about" class="nav-link">About Us</a></li>
+                <li class="nav-item"><a href="#contact" class="nav-link">Contact</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container hero-content">
+            <h1 class="hero-title">Empowering Innovation Through Technology</h1>
+            <p class="hero-subtitle">KARAK delivers state-of-the-art software development, immersive game experiences, and transformative tech education to drive success in the digital era.</p>
+            <a href="#contact" class="btn">Let's Collaborate</a>
+        </div>
+    </section>
+
+    <!-- Services/Branches Section -->
+    <section class="branches" id="services">
+        <div class="container">
+            <h2 class="section-title">Our Specialized Services</h2>
+            <p class="section-subtitle">Discover KARAK's three pillars of excellence, crafted to address your unique technological needs with precision and creativity.</p>
+            <div class="branches-container">
+                <div class="branch-card">
+                    <div class="branch-icon">
+                        <i class="fas fa-laptop-code"></i>
+                    </div>
+                    <h3 class="branch-title">KARAK: Softwares</h3>
+                    <p>End-to-end software engineering: From bespoke in-house tools and robust systems to dynamic websites, engaging ad platforms, elegant digital invitations, and seamless mobile apps.</p>
+                </div>
+                <div class="branch-card">
+                    <div class="branch-icon">
+                        <i class="fas fa-gamepad"></i>
+                    </div>
+                    <h3 class="branch-title">KARAK: Studios</h3>
+                    <p>Our dedicated game development arm, crafting captivating experiences like the SNAFU series. Stay tuned for upcoming launches on major app stores.</p>
+                </div>
+                <div class="branch-card">
+                    <div class="branch-icon">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <h3 class="branch-title">KARAK: Scholars</h3>
+                    <p>Customized coding mentorship for young minds (8-18), in collaboration with Azinza Tech. Personalized curricula adapted to each learner's pace and potential.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section class="projects" id="projects">
+        <div class="container">
+            <h2 class="section-title">Featured Projects</h2>
+            <p class="section-subtitle">Witness our expertise in action through a selection of groundbreaking projects spanning software, gaming, and beyond.</p>
+            <div class="projects-container">
+                <div class="project-card">
+                    <div class="project-img">SNAFU: Skyward</div>
+                    <div class="project-content">
+                        <h3 class="project-title">SNAFU: Skyward</h3>
+                        <p>Debut title from our studios, now thrilling players worldwide on mobile platforms.</p>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="project-img">SNAFU: Unhinged</div>
+                    <div class="project-content">
+                        <h3 class="project-title">SNAFU: Unhinged</h3>
+                        <p>Next evolution in the SNAFU saga, pushing boundaries in mobile gaming innovation.</p>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="project-img">Legal Invoicing System</div>
+                    <div class="project-content">
+                        <h3 class="project-title">Advanced Legal Invoicing</h3>
+                        <p>Secure, compliant system for streamlined financial operations in legal practices.</p>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="project-img">Business Efficiency Apps</div>
+                    <div class="project-content">
+                        <h3 class="project-title">Enterprise Efficiency Suite</h3>
+                        <p>Tailored applications optimizing workflows and boosting operational productivity.</p>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="project-img">Digital Invitations</div>
+                    <div class="project-content">
+                        <h3 class="project-title">Premium Digital Events</h3>
+                        <p>Sophisticated invitation and promotion tools for memorable events.</p>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="project-img">Petrol Company Database</div>
+                    <div class="project-content">
+                        <h3 class="project-title">Energy Sector Database</h3>
+                        <p>Robust data management solution for Athi-River's leading petrol enterprise.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about" id="about">
+        <div class="container">
+            <h2 class="section-title">Discover KARAK</h2>
+            <div class="about-content">
+                <p>KARAK stands at the forefront of technological innovation, uniting three synergistic divisions to deliver holistic digital transformations.</p>
+                <p>Rooted in a passion for excellence since our inception, we've evolved from a focused software house to a versatile tech ecosystem.</p>
+                <p>Through KARAK: Softwares, we engineer bespoke solutions that propel businesses forward. KARAK: Studios captivates global audiences with immersive gaming worlds. KARAK: Scholars nurtures tomorrow's innovators with expert, individualized tech education.</p>
+                <p>At our core, KARAK harnesses technology's potential to inspire change across industries, entertainment, and learning landscapes.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <h2 class="section-title">Connect With Us</h2>
+            <p class="section-subtitle">Let's discuss how KARAK can elevate your vision. Reach out today for expert consultations on your next project.</p>
+            <div class="contact-container">
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <div class="contact-icon"><i class="fas fa-envelope"></i></div>
+                        <div>karaksoftwares@gmail.com</div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon"><i class="fas fa-phone"></i></div>
+                        <div>0731003361</div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon"><i class="fab fa-github"></i></div>
+                        <div>github.com/karaksoftwares-cmyk</div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon"><i class="fab fa-instagram"></i></div>
+                        <div>instagram.com/karakexe</div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon"><i class="fab fa-tiktok"></i></div>
+                        <div>tiktok.com/@karakexe</div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon"><i class="fab fa-twitter"></i></div>
+                        <div>x.com/Karakexe</div>
+                    </div>
+                </div>
+                <div class="contact-form">
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <input type="text" class="form-input" placeholder="Your Name" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" class="form-input" placeholder="Your Email" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-input" placeholder="Subject">
+                        </div>
+                        <div class="form-group">
+                            <textarea class="form-input" placeholder="Your Message" required></textarea>
+                        </div>
+                        <button type="submit" class="btn">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="logo">KARAK</div>
+            <div class="social-links">
+                <a href="https://github.com/karaksoftwares-cmyk/karaksoftwares-cmyk" class="social-link"><i class="fab fa-github"></i></a>
+                <a href="https://www.instagram.com/karakexe" class="social-link"><i class="fab fa-instagram"></i></a>
+                <a href="https://www.tiktok.com/@karakexe" class="social-link"><i class="fab fa-tiktok"></i></a>
+                <a href="https://x.com/Karakexe" class="social-link"><i class="fab fa-twitter"></i></a>
+            </div>
+            <p>&copy; 2023 KARAK. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        const hamburger = document.getElementById('hamburger');
+        const navMenu = document.getElementById('nav-menu');
+        
+        hamburger.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+            hamburger.querySelector('i').classList.toggle('fa-bars');
+            hamburger.querySelector('i').classList.toggle('fa-times');
+        });
+        
+        // Close menu when clicking on a link
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', () => {
+                navMenu.classList.remove('active');
+                hamburger.querySelector('i').classList.add('fa-bars');
+                hamburger.querySelector('i').classList.remove('fa-times');
+            });
+        });
+        
+        // Header scroll effect
+        window.addEventListener('scroll', () => {
+            const header = document.getElementById('header');
+            header.classList.toggle('scrolled', window.scrollY > 50);
+        });
+        
+        // Simple form submission handling
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Thank you for your message! Our team will respond shortly.');
+            this.reset();
+        });
+    </script>
+</body>
+</html>
